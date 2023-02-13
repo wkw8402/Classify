@@ -35,7 +35,7 @@ matmul:
 	addi sp, sp, -12 #stack pointers
     sw s0, 0(sp)
     sw s1, 4(sp)
-	sw ra, 8(sp) #saving saved registers and return adress on stack memory
+	sw ra, 8(sp) #saving saved registers and return address on stack memory
 
     li s0, 0 #row index of m0
 

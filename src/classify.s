@@ -228,7 +228,8 @@ classify:
    j afterwards
 
 print_out:
-   jal print_int #print out the index of largest element in matrix o, a0 is still equal to index of largest element in matrix o
+   mv a0 s9
+   jal print_int #print out the index of largest element in matrix o
 
    li a0 '\n'
    jal print_char #print out new line character

@@ -184,7 +184,7 @@ classify:
    lw a1, 0(sp)
    addi sp, sp, 24
 
-   mv s10, a0 #s10 = pointer to matrix o
+   mv s10, a0 #s10 = pointer to matrix o so that it can later be freed from memory
    mv a6, s10 #a6 = pointer to matrix o
    mv a0, s5 #a0 = pointer to matrix m1
 
@@ -230,8 +230,7 @@ classify:
    j afterwards
 
 print_out:
-   mv a0 s9
-   jal print_int #print out the index of largest element in matrix o
+   jal print_int #print out the index of largest element in matrix o, a0 is still the index of largest element in matrix o
 
    li a0 '\n'
    jal print_char #print out new line character

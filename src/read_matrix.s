@@ -34,10 +34,10 @@ read_matrix:
     sw s4, 16(sp)
     sw s5, 20(sp)
     sw ra, 24(sp)
-
+    
     mv s0, a1 #s0 = pointer to num of rows
     mv s1, a2 #s1 = pointer to num of cols
-	
+    
 	mv a1, x0 #setting permission bit to 0 for read-only
     jal fopen #a0 = pointer to filename string, a1 = permission bit
 
@@ -118,5 +118,3 @@ malloc_error:
 fclose_error:
     li a0, 28
     j exit
-
-

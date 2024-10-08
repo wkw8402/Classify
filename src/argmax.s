@@ -19,7 +19,7 @@ argmax:
 	li t0, 1
 	blt a1, t0, malformed
 
-	mv t5, x0 //index of the largest element
+	mv t5, x0 #index of the largest element
     mv t2, zero		
 
 	lw t6, 0(a0) #t6 = maximum value, initially at value of first element

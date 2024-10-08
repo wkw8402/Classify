@@ -28,7 +28,7 @@ classify:
    bne a0, t0, incorrect_arguments
 
    #Prologue
-   addi sp, sp, -44
+   addi sp, sp, -48
    sw s0, 0(sp)
    sw s1, 4(sp)
    sw s2, 8(sp)
@@ -39,7 +39,8 @@ classify:
    sw s7, 28(sp)
    sw s8, 32(sp)
    sw s9, 36(sp)
-   sw ra, 40(sp)
+   sw s10, 40(sp)
+   sw ra, 44(sp)
 
    mv s0, a1 #s0 = list of pointers
    mv s1, a2 #s1 = 0 = print out classification, otherwise nothing
@@ -183,7 +184,8 @@ classify:
    lw a1, 0(sp)
    addi sp, sp, 24
 
-   mv a6, a0 #a6 = pointer to matrix o
+   mv s10, a0 #s10 = pointer to matrix o
+   mv a6, s10 #a6 = pointer to matrix o
    mv a0, s5 #a0 = pointer to matrix m1
 
    addi sp, sp, -16
@@ -243,6 +245,8 @@ afterwards:
    jal free
    mv a0 s8 #free pointer to matrix h
    jal free
+   mv a0 s10 #free pointer to matrix o
+   jal free
 
    mv a0 s2 #free pointer to allocated memory for m0's num of rows and num of cols
    jal free
@@ -264,8 +268,9 @@ afterwards:
    lw s7, 28(sp)
    lw s8, 32(sp)
    lw s9, 36(sp)
-   lw ra, 40(sp)
-   addi sp, sp, 44
+   lw s10, 40(sp)
+   lw ra, 44(sp)
+   addi sp, sp, 48
 
    jr ra
 
